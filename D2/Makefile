@@ -9,14 +9,17 @@ SRC=lcg_rand_gen.c
 VPATH=.
 OBJ=lcg_rand_gen.o #input.o main.o output.o utilities.o verlet1.o verlet2.o
 
-default: lcg_rand_gen.x
+default: lcg_rand_gen.x bit_rand_gen.x
 
 clean:
-	rm -f *.mod *.o ../ljmd-mpi.x
+	rm -f *.mod *.o lcg_rand_gen.x bit_rand_gen.x
 
 # linker rule
-lcg_rand_gen.x: $(OBJ)
-	$(CC) -o $@ $(CFLAGS) $^ $(LDLIBS)
+# lcg_rand_gen.x: $(OBJ)
+# 	$(CC) -o $@ $(CFLAGS) $< $(LDLIBS)
+
+%.x: %.o
+	$(CC) -o $@ $(CFLAGS) $< $(LDLIBS)
 
 # compilation pattern rule for objects
 %.o: %.c
