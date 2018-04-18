@@ -4,22 +4,28 @@ CC=gfortran
 CFLAGS=-ggdb -Wall -std=f2003
 
 
-default:list_types.o list_tools.o 01_readint.x 02_readfloat.x 03_is_sorted.x 04_is_sorted_real.x 07_derived_type.x
+default:utilities.o histogram.x montecarlo.x
 
-list_types.o: ./list_types.f03
-	$(CC) -c $(CFLAGS) -o $@ list_types.f03
-
-list_tools.o: list_tools.f03
-	$(CC) -c $(CFLAGS) -o $@ list_tools.f03
-
-01_readint.o: 01_readint.f03
+utilities.o: utilities.f03
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-01_readint.x: 01_readint.o
-	$(CC) -o $@ $< $(CFLAGS)
+montecarlo.o: montecarlo.f03
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+montecarlo.x: montecarlo.o utilities.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
+histogram.o: histogram.f03
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+histogram.x: histogram.o utilities.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 
 clean:
 	rm -f comp_* *.mod ./src/*.mod ./src/*.o *.o *.x *.out /src/*.out ./src/*~ *~
+plot:
+	gnuplot plot.gp
 
 check: ./run.sh
 	./run.sh
