@@ -1,7 +1,8 @@
 # -*- Makefile -*-
 SHELL=/bin/sh
 CC=gfortran
-CFLAGS=-ggdb -Wall -std=f2003
+CFLAGS=-ggdb -Wall -std=f2003 -fbounds-check -fcheck=all -I/usr/include
+LD_FLAGS = -L/usr/lib
 
 
 default:utilities.o histogram.x montecarlo.x
@@ -10,10 +11,10 @@ utilities.o: utilities.f03
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 montecarlo.o: montecarlo.f03
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS)  -L/usr/lib -llapack -L/usr/lib -lblas
 
 montecarlo.x: montecarlo.o utilities.o
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(LD_FLAGS)  -L/usr/lib -llapack -L/usr/lib -lblas
 
 histogram.o: histogram.f03
 	$(CC) -o $@ -c $< $(CFLAGS)
