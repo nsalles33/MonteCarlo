@@ -15,7 +15,7 @@ PROGRAM monte_carlo
   ! READ *, nsweep, N, M, T
   nsweep = 1000
   N = 1000
-  M = 100
+  M = 1
   T = 0.1
   !
   CALL CPU_TIME(time1)
@@ -28,8 +28,8 @@ PROGRAM monte_carlo
   ALLOCATE(A(m,n))
   ALLOCATE(J_buff(n))
 
-  ! nthreads = 4
-  ! CALL OMP_SET_NUM_THREADS(nthreads)
+  nthreads = 4
+  CALL OMP_SET_NUM_THREADS(nthreads)
 
   !$OMP PARALLEL DO
   ! OPEN(unit=130,file='A',status='unknown')
@@ -70,7 +70,7 @@ PROGRAM monte_carlo
      DO k = 1, m, 1
         H(k) = SUM(A(k,:))/N
      END DO
-     WRITE(120,*) SUM(H)/N
+     WRITE(120,*) SUM(H)/m
   ENDDO
 
   !$OMP END PARALLEL DO
