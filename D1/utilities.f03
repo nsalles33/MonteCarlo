@@ -32,7 +32,7 @@ CONTAINS
     pi  = 3.14159265359/(num*T)
     inv_pi = num/3.14159265359
     gamma = 1.25
-
+    !$OMP PARALLEL DO
     DO i1 = 1, num, 1
        DO i2 = i1+1, num, 1
           x = pi*(i1 - i2)
@@ -40,6 +40,8 @@ CONTAINS
           J(i1,i2) = -x**(-gamma)
        END DO
     END DO
+    !$OMP END PARALLEL DO
+
   END SUBROUTINE corr
 
   SUBROUTINE energy(J, A , N, M, H)

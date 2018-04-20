@@ -1,9 +1,13 @@
 # -*- Makefile -*-
+# SHELL=/bin/sh
+# CC=gfortran
+# CFLAGS=-ggdb -Wall -std=f2003 -fbounds-check -fcheck=all -I/usr/include
+# LD_FLAGS = -L/usr/lib
+
 SHELL=/bin/sh
 CC=gfortran
-CFLAGS=-ggdb -Wall -std=f2003 -fbounds-check -fcheck=all -I/usr/include
-LD_FLAGS = -L/usr/lib
-
+CFLAGS=-ggdb -Wall -std=f2003 -fopenmp -fbounds-check -fcheck=all -I/usr/include
+LD_FLAGS = -L/usr/lib -fopenmp
 
 default:utilities.o histogram.x montecarlo.x
 

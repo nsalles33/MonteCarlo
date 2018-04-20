@@ -8,14 +8,14 @@ PROGRAM monte_carlo
   REAL (KIND= dp):: dx, x!checksum , my_sum, tolerance, dx
   REAL (KIND= dp):: time1, time2!, time3
   REAL (KIND= dp):: T
-  INTEGER (KIND=dp):: i1, i2, k, N, M, nsweep, i
+  INTEGER (KIND=dp):: i1, i2, k, N, M, nsweep, i, nthreads
   INTEGER (KIND=sp):: i3
   ! PRINT *,'Sweeps N M Temp'
   ! READ *, nsweep
   ! READ *, nsweep, N, M, T
-  nsweep = 100
-  N = 100
-  M = 10
+  nsweep = 1000
+  N = 1000
+  M = 100
   T = 0.1
   !
   CALL CPU_TIME(time1)
@@ -28,7 +28,11 @@ PROGRAM monte_carlo
   ALLOCATE(A(m,n))
   ALLOCATE(J_buff(n))
 
-  OPEN(unit=130,file='A',status='unknown')
+  ! nthreads = 4
+  ! CALL OMP_SET_NUM_THREADS(nthreads)
+
+  !$OMP PARALLEL DO
+  ! OPEN(unit=130,file='A',status='unknown')
   DO i1=1,N,1
      DO i2 = 1, m, 1
         CALL random_NUMBER(x)
@@ -37,11 +41,13 @@ PROGRAM monte_carlo
         ! END IF
      END DO
   END DO
-  CLOSE(130)
+  ! CLOSE(130)
+  !$OMP END PARALLEL DO
 
   dx = 0.1
   OPEN(unit=120,file='mag',status='unknown')
   OPEN(unit=180,file='Avg_energy',status='unknown')
+  !$OMP PARALLEL DO
   DO i3 = 1, 40, 1
      T = i3*dx
      CALL corr(N,J, T)
@@ -67,7 +73,7 @@ PROGRAM monte_carlo
      WRITE(120,*) SUM(H)/N
   ENDDO
 
-
+  !$OMP END PARALLEL DO
   CLOSE(120)
   CLOSE(180)
 

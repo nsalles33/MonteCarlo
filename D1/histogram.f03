@@ -16,23 +16,6 @@ PROGRAM readfloat
 
 
 
-
-  ! READ(5,*) n         !reading the number of integers
-  ! WRITE(*,*) "Total number of integers", n
-  !
-  ! READ(5,*)t          ! so, read them into the array t
-  ! READ(5,*) checksum  ! the provided sum of the numbers
-  !
-  ! my_sum = SUM(t)
-  ! x = ABS(my_sum - checksum)
-  ! IF (x .LE. tolerance) THEN
-  !    WRITE(*,*) "my_sum:",my_sum ,"  =  ","givensum:", checksum
-  !    WRITE(*,*) "It's working :)"
-  !    WRITE(*,*) "=============================================="
-  ! ELSE
-  !    WRITE(*,*) "the absolute difference is:", x
-  ! ENDIF
-
   DEALLOCATE(X)
 
 END PROGRAM readfloat
