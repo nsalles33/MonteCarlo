@@ -16,6 +16,7 @@ PROGRAM histo
   CALL grid(X)
   OPEN(unit=120,file='4_sum',status='unknown')
   OPEN(unit=180,file='6_sum',status='unknown')
+  !$OMP PARALLEL DO
   DO i = 1, nsamp, 1
      DO j = 1, 6, 1
         CALL random_NUMBER(dx)
@@ -24,12 +25,15 @@ PROGRAM histo
      END DO
      dat(i) = SUM(my_sum)
   END DO
+  !$OMP END PARALLEL DO
+
 
   CALL histgrm(dat,hist,x,len)
   DO i = 1, nmax, 1
      WRITE(180,*) x(i), hist(i)
   END DO
 
+  !$OMP PARALLEL DO
   DO i = 1, nsamp, 1
      DO j = 1, 4, 1
         CALL random_NUMBER(dx)
@@ -38,6 +42,7 @@ PROGRAM histo
      END DO
      dat(i) = SUM(checksum)
   END DO
+  !$OMP END PARALLEL DO
 
   CALL histgrm(dat,hist,x,len)
   DO i = 1, nmax, 1
