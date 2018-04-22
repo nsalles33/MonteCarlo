@@ -2,6 +2,7 @@
 *.x
 *.gch
 *.*.*
+*.out
 A
 Avg_energy
 ENERGY

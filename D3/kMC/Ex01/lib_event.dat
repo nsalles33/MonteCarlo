@@ -1,0 +1,11 @@
+#
+#  Library of event
+#  System : Vacancy diffusion in 2D
+#  Format File :
+#  Id_reaction	X1	X2	Y1	c	de
+#  Id_event	init_state	final_state	ebarrier	de
+#
+
+Number_of_events 2
+1 0 1 1.0 1.0 0.0
+2 1 0 1.0 2.0 0.0
