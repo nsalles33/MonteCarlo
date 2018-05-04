@@ -11,4 +11,9 @@ avg_energy
 mag
 magnetisation
 *.mod
-suseptibility
+suseptibility 
+*.log
+*.aux
+test.tex
+test.pdf
+
