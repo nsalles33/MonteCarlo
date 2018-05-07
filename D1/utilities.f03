@@ -1,7 +1,7 @@
 MODULE utilities
   IMPLICIT NONE
   PRIVATE
-  PUBLIC :: grid, histgrm, corr, energy
+  PUBLIC :: grid, histgrm, guss
 CONTAINS
 
   SUBROUTINE grid(dat)
@@ -18,9 +18,9 @@ CONTAINS
     END DO
   END SUBROUTINE grid
 
-  SUBROUTINE histgrm(dat, hist, X, len)
+  SUBROUTINE histgrm(dat, hist, X, len, prob)
     IMPLICIT NONE
-    REAL,INTENT(inout) :: dat(:), hist(:), X(:), len
+    REAL,INTENT(inout) :: dat(:), hist(:), X(:),prob(:), len
     INTEGER :: n, m, i, j
     REAL :: dx
 
@@ -43,48 +43,20 @@ CONTAINS
           hist(1) = hist(1) + 1
        ENDIF
     END DO
+    prob = (hist/dx)/m
   END SUBROUTINE histgrm
 
-
-  SUBROUTINE corr(num, J, T)
+  SUBROUTINE guss(x,mu,sigma,g)
     IMPLICIT NONE
-
-    INTEGER, PARAMETER :: sp = 4, dp = 8
-    REAL(KIND= dp),INTENT(inout) ::  J(:,:)
-    REAL(KIND= dp),INTENT(inout) :: T
-    INTEGER(KIND= dp), INTENT(in) :: num
-    INTEGER(KIND= dp) :: i1, i2
-    REAL (KIND= dp):: x, pi, gamma, inv_pi
-
-    pi  = 3.14159265359/(num*T)
-    inv_pi = num/3.14159265359
-    gamma = 1.25
-    DO i1 = 1, num, 1
-       DO i2 = i1+1, num, 1
-          x = pi*(i1 - i2)
-          x = inv_pi*ABS(SIN(x))
-          J(i1,i2) = -x**(-gamma)
-       END DO
+    REAL, INTENT(inout) :: mu, sigma, x(:), g(:)
+    REAL:: pi
+    INTEGER:: n, i
+    pi = 3.14159265359
+    n = SIZE(x, dim=1)
+    DO i = 1, n, 1
+       g(i)=1.d0/SQRT(2*pi*sigma*sigma)*EXP(-(x(i)-mu)**2/(2.d0*sigma*sigma))
     END DO
 
-  END SUBROUTINE corr
-
-  SUBROUTINE energy(J, A , N, M, H)
-    IMPLICIT NONE
-
-    INTEGER, PARAMETER :: sp = 4, dp = 8
-    REAL(KIND= dp),INTENT(inout) ::  J(:,:), A(:,:), H(:)
-    INTEGER(KIND= dp), INTENT(in) :: n, m
-    INTEGER(KIND= dp) :: i1, i2, i3
-
-    DO i1 = 1, m, 1
-       DO i2 = 1, n, 1
-          DO i3 = 1, n, 1
-             H(i1) =+ J(i3,i2)*A(i1,i3)*A(i1,i2)
-          END DO
-       END DO
-    END DO
-    WRITE(*,*) H
-  END SUBROUTINE energy
+  END SUBROUTINE guss
 
 END MODULE utilities

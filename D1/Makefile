@@ -17,8 +17,8 @@ utilities.o: utilities.f03
 montecarlo.o: montecarlo.f03
 	$(CC) -o $@ -c $< $(CFLAGS)  -L/usr/lib -llapack -L/usr/lib -lblas
 
-montecarlo.x: montecarlo.o utilities.o
-	$(CC) -o $@ $^ $(LD_FLAGS)  -L/usr/lib -llapack -L/usr/lib -lblas
+# montecarlo.x: montecarlo.o utilities.o
+	# $(CC) -o $@ $^ $(LD_FLAGS)  -L/usr/lib -llapack -L/usr/lib -lblas
 
 histogram.o: histogram.f03
 	$(CC) -o $@ -c $< $(CFLAGS)

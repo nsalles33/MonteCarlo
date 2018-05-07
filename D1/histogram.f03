@@ -1,10 +1,11 @@
 PROGRAM histo
   USE utilities
+
   IMPLICIT NONE
 
   INTEGER, PARAMETER :: sp =4, nmax=200, nsamp=2000000
   REAL(kind = sp):: len = 4.0
-  REAL (KIND= sp), ALLOCATABLE :: X(:), dat(:), hist(:)
+  REAL (KIND= sp), ALLOCATABLE :: X(:), dat(:), hist(:),prob(:)
   REAL (KIND= sp):: checksum(4), my_sum(6), dx!, diff  ! the real is 4byte long but has been convert to double presicion type with kind =8
   INTEGER (KIND=sp):: i, j
 
@@ -12,6 +13,7 @@ PROGRAM histo
   ALLOCATE(X(nmax))
   ALLOCATE(dat(nsamp))
   ALLOCATE(hist(nmax))
+  ALLOCATE(prob(nmax))
 
   CALL grid(X)
   OPEN(unit=120,file='4_sum',status='unknown')
@@ -28,7 +30,7 @@ PROGRAM histo
   !$OMP END PARALLEL DO
 
 
-  CALL histgrm(dat,hist,x,len)
+  CALL histgrm(dat,hist,x,len, prob)
   DO i = 1, nmax, 1
      WRITE(180,*) x(i), hist(i)
   END DO
@@ -44,7 +46,7 @@ PROGRAM histo
   END DO
   !$OMP END PARALLEL DO
 
-  CALL histgrm(dat,hist,x,len)
+  CALL histgrm(dat,hist,x,len, prob)
   DO i = 1, nmax, 1
      WRITE(120,*) x(i), hist(i)
   END DO
@@ -56,6 +58,7 @@ PROGRAM histo
 
   DEALLOCATE(X)
   DEALLOCATE(hist)
+  DEALLOCATE(prob)
   DEALLOCATE(dat)
 
 END PROGRAM histo
