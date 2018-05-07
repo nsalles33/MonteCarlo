@@ -28,7 +28,10 @@ CONTAINS
     n = SIZE(dat, dim=1)!(dat)
     m = SIZE(hist, dim=1)!(dat)
     dx = len/m
+
     hist(:) = 0
+    prob(:) = 0
+
     DO i = 2, m, 1
        DO j = 1, n, 1
           ! IF ( dat(j) .LE. X(1) ) THEN
@@ -43,7 +46,7 @@ CONTAINS
           hist(1) = hist(1) + 1
        ENDIF
     END DO
-    prob = (hist/dx)/m
+    prob = (hist/dx)/n
   END SUBROUTINE histgrm
 
   SUBROUTINE guss(x,mu,sigma,g)
