@@ -52,7 +52,7 @@ CONTAINS
   SUBROUTINE guss(x,mu,sigma,g)
     IMPLICIT NONE
     REAL, INTENT(inout) :: mu, sigma, x(:), g(:)
-    REAL:: pi, dx
+    REAL:: pi
     INTEGER:: n, i
     pi = 3.14159265359
     n = SIZE(x, dim=1)
