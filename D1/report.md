@@ -10,3 +10,10 @@
 
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4.jpg)
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/5.jpg)
+###
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_4.png)
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_6.png)
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4_6_probability.png)
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/probability.png)
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/histogram.png)
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/error_percentage.png)
