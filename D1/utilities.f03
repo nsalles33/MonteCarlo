@@ -1,7 +1,7 @@
 MODULE utilities
   IMPLICIT NONE
   PRIVATE
-  PUBLIC :: grid, histgrm, guss
+  PUBLIC :: grid, histgrm, guss, error
 CONTAINS
 
   SUBROUTINE grid(dat)
@@ -20,7 +20,7 @@ CONTAINS
 
   SUBROUTINE histgrm(dat, hist, X, len, prob)
     IMPLICIT NONE
-    REAL,INTENT(inout) :: dat(:), hist(:), X(:),prob(:), len
+    REAL,INTENT(inout) :: dat(:), hist(:), X(:), prob(:), len
     INTEGER :: n, m, i, j
     REAL :: dx
 
@@ -46,7 +46,7 @@ CONTAINS
           hist(1) = hist(1) + 1
        ENDIF
     END DO
-    prob = (hist/dx)/n
+    prob(:) = (hist(:)/dx)/n
   END SUBROUTINE histgrm
 
   SUBROUTINE guss(x,mu,sigma,g)
@@ -57,9 +57,23 @@ CONTAINS
     pi = 3.14159265359
     n = SIZE(x, dim=1)
     DO i = 1, n, 1
-       g(i)=1.d0/SQRT(2*pi*sigma*sigma)*EXP(-(x(i)-mu)**2/(2.d0*sigma*sigma))
+       g(i)=1./SQRT(2*pi*sigma*sigma)*EXP(-(x(i)-mu)**2/(2.0*sigma*sigma))
     END DO
-
   END SUBROUTINE guss
+
+  SUBROUTINE error(err, prob, g, na, max)
+    IMPLICIT NONE
+    REAL, INTENT(INOUT) ::err(:), prob(:,:), g(:)
+    INTEGER, INTENT(INOUT) :: na, max
+    REAL :: er(max)
+    INTEGER:: i
+    DO i = 1, na, 1
+       er(:) = 100*ABS( prob(:,i) - g(:) )/g(:)
+       err(i) = MAXVAL(er)
+       ! DO j = 1, nmax, 1
+       !
+       ! END DO
+    END DO
+  END SUBROUTINE error
 
 END MODULE utilities
