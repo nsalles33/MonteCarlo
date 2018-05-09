@@ -46,16 +46,18 @@ CONTAINS
           hist(1) = hist(1) + 1
        ENDIF
     END DO
-    prob(:) = (hist(:)/dx)/n
+    prob(:) = hist(:)/(n*dx)
   END SUBROUTINE histgrm
 
   SUBROUTINE guss(x,mu,sigma,g)
     IMPLICIT NONE
     REAL, INTENT(inout) :: mu, sigma, x(:), g(:)
-    REAL:: pi
+    REAL:: pi, dx
     INTEGER:: n, i
     pi = 3.14159265359
     n = SIZE(x, dim=1)
+    ! dx = 4.0/200
+    ! x(:) = x(:) + dx/2
     DO i = 1, n, 1
        g(i)=1./SQRT(2*pi*sigma*sigma)*EXP(-(x(i)-mu)**2/(2.0*sigma*sigma))
     END DO
@@ -68,11 +70,8 @@ CONTAINS
     REAL :: er(max)
     INTEGER:: i
     DO i = 1, na, 1
-       er(:) = 100*ABS( prob(:,i) - g(:) )/g(:)
+       er(:) = 100*ABS(prob(:,i) - g(:))/g(:)
        err(i) = MAXVAL(er)
-       ! DO j = 1, nmax, 1
-       !
-       ! END DO
     END DO
   END SUBROUTINE error
 
