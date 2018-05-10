@@ -10,10 +10,30 @@
 
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4.jpg)
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/5.jpg)
-###
-![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_4.png)
-![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_6.png)
-![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4_6_probability.png)
-![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/probability.png)
+
+
+
+
+## The histogram obtained counting the number of occurances.
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/histogram.png)
+
+## The probability for n=4 compared with the actual gaussian probability.
+[](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_4.png)
+
+
+
+### The probability for n=6 compared with the actual gaussian probability.
+[](https://github.com/rjtkp/MonteCarlo/blob/master/D1/prob_6.png)
+
+
+
+### The probability for n=4 and n=6 compared with the actual gaussian probability.
+[](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4_6_probability.png)
+
+
+
+
+
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/probability.png)
+
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/error_percentage.png)
