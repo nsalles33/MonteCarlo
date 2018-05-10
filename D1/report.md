@@ -27,8 +27,19 @@
 ### The probability for n=4 and n=6 compared with the actual gaussian probability.
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4_6_probability.png)
 
-### The probability for n=4 and n=6 compared with the actual gaussian probability.
+### The probabilities for different n values
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/probability.png)
 
-### The probability for n=4 and n=6 compared with the actual gaussian probability.
-![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/error_percentage.png)
+### The error in the probability 
+```math_def
+The relative error % = 100*[prob_n(i) - gaussian(i)]/gaussian(i)
+```
+* Where the prob_n represents the probability of n sums of the random variable.
+The value of maximun realative error percentage starts with a really high value but decrese very sharply and then get flatened at the value of n is incresed. The minimum value error percentage is obtained for the of n of 210.
+
+![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/error_percent.png)
+
+
+## Problem 3: Ising model with arbitrary range
+
+* I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c).
