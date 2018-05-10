@@ -43,3 +43,6 @@ The value of maximun realative error percentage starts with a really high value 
 ## Problem 3: Ising model with arbitrary range
 
 * I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c).
+
+* For larger N values it makes sense to parallelize the code using the hybrid OpenMP-mpi paradigm so that proccesses between different nodes can talk with each other using the message passing interface which is restricted for the OpenMp thread as indeprendent node dont have shared memory among them.
+
