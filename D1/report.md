@@ -50,6 +50,8 @@ The value of maximun realative error percentage starts with a really high value 
 * Here a simila rtrend is seen but in opposite direction. The average square of magnetization statys constant for the temperature closer to zero then as the temparature inceases there is more fluctuation among the spins of the system. There complete chaos when the temperature is too high and as a result the magnatization goes to zero. 
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/magnetization.png)
 
+### Variation of the intended values through the sweeps
+* We see the values are far away from the equalibrium in the biginning but as the number of sweeps incease, it travels towards the statble equalibrium for the given parameters.
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/for_sweep.png)
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/forsweeps_mag.png)
 
