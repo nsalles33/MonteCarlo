@@ -43,8 +43,11 @@ The value of maximun realative error percentage starts with a really high value 
 ## Problem 3: Ising model with arbitrary range
 
 * I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c). 
+### The varying enery of the system with temperature
 ![energy](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/energy.png)
+### The varying magnetization of the system with temperature
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/magnetization.png)
+
 ![speed up](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/speed_up.png)
 * I have done different studies on the systems with changing the temparatue, changing the size  
 
