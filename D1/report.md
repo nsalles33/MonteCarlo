@@ -42,7 +42,8 @@ The value of maximun realative error percentage starts with a really high value 
 
 ## Problem 3: Ising model with arbitrary range
 
-* I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c). 
+* I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c).
+* To study the system with varying temparature I am taking 100 spins and 500 sweeps for the temperature starting from 0 incresed to 40 at a step of 0.8 each time. I am taking the mean from the last 10 sweeps for energy and magnetization of teh system then calculating the mean and standard devaition for the values of last 10 sweeps and plotting them with respect to temperature.
 ### The varying enery of the system with temperature
 * Here we can clearly observe a transition in the average energy in the system at temp `~ 9.5` where the system goes from one stable state to another state. After temp. 15 the energy satuarates and stops increasing.
 ![energy](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/energy.png)
@@ -51,6 +52,9 @@ The value of maximun realative error percentage starts with a really high value 
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/magnetization.png)
 
 ### Variation of the intended values through the sweeps
+* Here my system has 1000 spins and the temp.is set 10 and the system goes through 200 sweeps and at the end of each sweep I am calculating the average energy and the average square of magnatization of the system and plotting them against the sweep number.
+* From all data through the sweeps the average energy is calculated to be ` -5600.205175` with a standard deviation of ` 198.793850`.
+* The average square of magnetization is calculated to be ` 0.720993` with a standard deviation of `0.030410`.
 * We see the values are far away from the equalibrium in the biginning but as the number of sweeps incease, it travels towards the statble equalibrium for the given parameters.
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/for_sweep.png)
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/forsweeps_mag.png)
