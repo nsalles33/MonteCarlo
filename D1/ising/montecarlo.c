@@ -128,7 +128,7 @@ int main() {
 
       average(En, walker, &en);
       average(Mf, walker, &mag);
-      if (it >= Nsw) {
+      if (buff == N - 1) {
         data[measure] = en;
         measure = measure + 1;
         data[measure] = mag;

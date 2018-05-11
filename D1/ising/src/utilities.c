@@ -87,8 +87,9 @@ void stder(double T, double *data, int N, FILE *file) {
       stder1 += pow(data[i] - mean1, 2);
     }
   }
+  int ii = 0;
   for (int kk = 0; kk < N; kk += 2) {
-    fprintf(file, "%f %f\n", data[kk], data[kk + 1]);
+    printf("%d %f %f\n", ii++, data[kk], data[kk + 1]);
   }
   stder = sqrt(stder / (2 * N));
   stder1 = sqrt(stder1 / (2 * N));
