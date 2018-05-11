@@ -59,9 +59,31 @@ The value of maximun realative error percentage starts with a really high value 
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/for_sweep.png)
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/forsweeps_mag.png)
 
-
-![speed up](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/speed_up.png)
-* I have done different studies on the systems with changing the temparatue, changing the size  
+### Speed Up
 
 * For larger N values it makes sense to parallelize the code using the hybrid OpenMP-mpi paradigm so that proccesses between different nodes can talk with each other using the message passing interface which is restricted for the OpenMp thread as indeprendent node dont have shared memory among them.
+
+* With changing the numbe rof threds there was no improvement in the performence as openblas already utilizes the multitreading atrchitecture underneath. The code speands most of the time in the loop of sweeps and inside that loop the multiplication for the energy calculation and update takes the most amont of time  where blas uses the most number threads available for the system. The contribution from all the other parts is negligible. So, no visible speed up is observed.
+* When I use `export OMP_NUM_THREADS=1` and run I get average time per sweeps as `0.597459 sec` but with `export OMP_NUM_THREADS=20`, I get `0.578473 sec` per sweed on average for 1000 spins and 100 walker.
+#### PS: I have done all tests in Ulysses with specifications of
+```
+processor	: 19
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
+stepping	: 4
+microcode	: 1064
+cpu MHz		: 2799.939
+cache size	: 25600 KB
+physical id	: 1
+siblings	: 10
+core id		: 12
+cpu cores	: 10
+apicid		: 56
+initial apicid	: 56
+fpu		: yes
+fpu_exception	: yes
+```
+
 
