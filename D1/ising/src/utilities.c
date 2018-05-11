@@ -88,9 +88,9 @@ void stder(double T, double *data, int N, FILE *file) {
     }
   }
   int ii = 0;
-  for (int kk = 0; kk < N; kk += 2) {
-    printf("%d %f %f\n", ii++, data[kk], data[kk + 1]);
-  }
+  // for (int kk = 0; kk < N; kk += 2) {
+  //   printf("%d %f %f\n", ii++, data[kk], data[kk + 1]);
+  // }
   stder = sqrt(stder / (2 * N));
   stder1 = sqrt(stder1 / (2 * N));
 

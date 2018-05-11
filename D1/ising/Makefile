@@ -10,7 +10,7 @@ HEAD=utilities
 LFLAGS= -lm -lopenblas -L ${OPENBLAS_LIB}
 OPENMP_INC=/u/shared/programs/x86_64/gcc/4.8.2/lib/gcc/x86_64-redhat-linux-gnu/4.8.2/include
 CC=gcc
-CFLAGS=-g -std=c11 -fopenmp -Wall -Wextra -I include -I ${OPENBLAS_INC} #-I ${OPENMP_INC}
+CFLAGS=-g -std=c11 -fopenmp -D_USE_OMP -Wall -Wextra -I include -I ${OPENBLAS_INC} #-I ${OPENMP_INC}
 
 default: montecarlo.x
 
