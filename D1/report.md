@@ -11,6 +11,26 @@
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/4.jpg)
 ![](https://github.com/rjtkp/MonteCarlo/blob/master/D1/5.jpg)
 
+#### PS: I have done all tests in Ulysses with specifications of
+```
+processor	: 19
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
+stepping	: 4
+microcode	: 1064
+cpu MHz		: 2799.939
+cache size	: 25600 KB
+physical id	: 1
+siblings	: 10
+core id		: 12
+cpu cores	: 10
+apicid		: 56
+initial apicid	: 56
+fpu		: yes
+fpu_exception	: yes
+```
 
 
 ### The histogram obtained from counting the number occurances.
@@ -67,26 +87,4 @@ The value of maximun realative error percentage starts with a really high value 
 * When I use `export OMP_NUM_THREADS=1` and run I get average time per sweeps as `0.597459 sec` but with `export OMP_NUM_THREADS=20`, I get `0.578473 sec` per sweed on average for 1000 spins and 100 walker.
 * Here we can see the exponential increase of time per sweep for increasing N value.
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/varywithN.png)
-
-#### PS: I have done all tests in Ulysses with specifications of
-```
-processor	: 19
-vendor_id	: GenuineIntel
-cpu family	: 6
-model		: 62
-model name	: Intel(R) Xeon(R) CPU E5-2680 v2 @ 2.80GHz
-stepping	: 4
-microcode	: 1064
-cpu MHz		: 2799.939
-cache size	: 25600 KB
-physical id	: 1
-siblings	: 10
-core id		: 12
-cpu cores	: 10
-apicid		: 56
-initial apicid	: 56
-fpu		: yes
-fpu_exception	: yes
-```
-
 
