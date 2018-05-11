@@ -87,11 +87,11 @@ void stder(double T, double *data, int N, FILE *file) {
       stder1 += pow(data[i] - mean1, 2);
     }
   }
-  // for (int kk = 0; kk < 20; kk += 2) {
-  //   printf("%f %f\n", data[kk], data[kk + 1]);
-  // }
+  for (int kk = 0; kk < N; kk += 2) {
+    fprintf(file, "%f %f\n", data[kk], data[kk + 1]);
+  }
   stder = sqrt(stder / (2 * N));
   stder1 = sqrt(stder1 / (2 * N));
 
-  fprintf(file, "%f %f %f %f %f\n", T, mean, stder, mean1, stder1);
+  printf("%f %f %f %f %f\n", T, mean, stder, mean1, stder1);
 }

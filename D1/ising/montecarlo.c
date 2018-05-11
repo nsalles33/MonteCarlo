@@ -3,9 +3,9 @@
 #define M_PI 3.14159265
 #define N 1000     // Number of spins
 #define Nsweep 200 // Number of sweeps
-#define walker 200 // Number of walkers
+#define walker 100 // Number of walkers
 #define gamma 1.25
-#define NT 300
+#define NT 1
 #define dT 0.1
 
 int main() {
@@ -72,16 +72,16 @@ int main() {
     Mi[i] = mag * mag;
   }
 
-  double T = 0., *buffer;
+  double T = 10., *buffer;
   int buff = 0;
-  double data[20];
+  double data[2 * Nsweep];
   int measure = 0;
-  for (int ii = 0; ii < 20; ii++) {
+  for (int ii = 0; ii < 2 * Nsweep; ii++) {
     data[ii] = 0.0;
   }
 
   char filename[80];
-  sprintf(filename, "out.dat");
+  sprintf(filename, "out_sweeptest.dat");
   FILE *file = fopen(filename, "w");
 
   int Nsw = Nsweep * N - 10;
@@ -136,7 +136,7 @@ int main() {
       }
     }
     measure = 0;
-    stder(T, data, 20, file);
+    stder(T, data, 2 * Nsweep, file);
     // printf("%f\t%f\t%f\n", T, en, mag);
     T = T + dT;
   }
