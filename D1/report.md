@@ -65,6 +65,9 @@ The value of maximun realative error percentage starts with a really high value 
 
 * With changing the numbe rof threds there was no improvement in the performence as openblas already utilizes the multitreading atrchitecture underneath. The code speands most of the time in the loop of sweeps and inside that loop the multiplication for the energy calculation and update takes the most amont of time  where blas uses the most number threads available for the system. The contribution from all the other parts is negligible. So, no visible speed up is observed.
 * When I use `export OMP_NUM_THREADS=1` and run I get average time per sweeps as `0.597459 sec` but with `export OMP_NUM_THREADS=20`, I get `0.578473 sec` per sweed on average for 1000 spins and 100 walker.
+* Here we can see the exponential increase of time per sweep for increasing N value.
+![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/varywithN.png)
+
 #### PS: I have done all tests in Ulysses with specifications of
 ```
 processor	: 19
