@@ -44,9 +44,15 @@ The value of maximun realative error percentage starts with a really high value 
 
 * I have written Monte code of Carlo algorithm which generates samples of spin configurations distributed according to the Boltzmann weight `exp(−H(~σ )/T )` and by using a finite number M of independent walkers with independent seed initialization whcich can be found [here](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/montecarlo.c). 
 ### The varying enery of the system with temperature
+* Here we can clearly observe a transition in the average energy in the system at temp `~ 9.5` where the system goes from one stable state to another state. After temp. 15 the energy satuarates and stops increasing.
 ![energy](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/energy.png)
 ### The varying magnetization of the system with temperature
+* Here a simila rtrend is seen but in opposite direction. The average square of magnetization statys constant for the temperature closer to zero then as the temparature inceases there is more fluctuation among the spins of the system. There complete chaos when the temperature is too high and as a result the magnatization goes to zero. 
 ![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/magnetization.png)
+
+![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/for_sweep.png)
+![magnetization](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/forsweeps_mag.png)
+
 
 ![speed up](https://github.com/rjtkp/MonteCarlo/blob/master/D1/ising/speed_up.png)
 * I have done different studies on the systems with changing the temparatue, changing the size  
