@@ -22,4 +22,4 @@ run:
 	./KMC.x input_KMC.dat
 
 clean:
-	rm *.o *.mod *.so
+	rm *.o *.mod *.so *.x
